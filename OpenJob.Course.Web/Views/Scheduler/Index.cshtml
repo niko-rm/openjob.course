@@ -23,11 +23,12 @@
                 @{
                     var listItems = Model.students.Select(x => new SelectListItem()
                     {
+                        
                         Text = x.IdStudent.ToString(),
                         Value = x.IdStudent.ToString()
                     }).AsEnumerable();
 
-                    var selectListStudent = new SelectList(listItems,"Text","Value");
+                    var selectListStudent = new SelectList(listItems, "Text", "Value");
                 }
 
                 @Html.DropDownListFor(model => Model.IdSelectedStudent, listItems, "Select student", new {id="dropdown-student"})
