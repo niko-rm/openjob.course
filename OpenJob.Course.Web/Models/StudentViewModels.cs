@@ -8,6 +8,5 @@ namespace OpenJob.Course.Web.Models
 {
     public class StudentViewModels : StudentDTO
     {
-        public string Username { get; set; }
     }
 }

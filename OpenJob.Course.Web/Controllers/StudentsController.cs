@@ -25,7 +25,13 @@ namespace OpenJob.Course.Web.Controllers
         public async Task<ActionResult> Index()
         {
             var result = await Student.GetAll(db);
-            return View(result.Select(x=> new StudentViewModels() { IdStudent = x.IdStudent, Name = x.Name, SurName = x.SurName }).ToList());
+            return View(
+                result.Select(x=> new StudentViewModels() {
+                    IdStudent = x.IdStudent,
+                    Username =x.Username,
+                    Name = x.Name,
+                    SurName = x.SurName
+                }).ToList());
         }
 
         // GET: Students/Details/5
@@ -36,7 +42,15 @@ namespace OpenJob.Course.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var students = await Student.GetAll(db);
-            StudentViewModels studentViewModels = students.Where(x=> x.IdStudent == id).Select(x=>new StudentViewModels() { IdStudent = x.IdStudent, Name = x.Name, SurName = x.SurName }).FirstOrDefault();
+            StudentViewModels studentViewModels = students.Where(
+                x=> x.IdStudent == id)
+                .Select(x=>new StudentViewModels() {
+                    IdStudent = x.IdStudent,
+                    Username = x.Username,
+                    Name = x.Name,
+                    SurName = x.SurName })
+                .FirstOrDefault();
+
             if (studentViewModels == null)
             {
                 return HttpNotFound();
@@ -59,7 +73,13 @@ namespace OpenJob.Course.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Students.Add(new Student { StudentName = studentViewModels.Name, StudentSurname = studentViewModels.SurName });
+                db.Students.Add(
+                    new Student {
+                        StudentName = studentViewModels.Name,
+                        StudentSurname = studentViewModels.SurName,
+                        StudentUsername = studentViewModels.Username
+                    });
+
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

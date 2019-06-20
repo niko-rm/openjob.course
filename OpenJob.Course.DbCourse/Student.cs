@@ -25,6 +25,7 @@ namespace OpenJob.Course.DbCourse.Entities
                 {
                     Name = student.StudentName,
                     SurName = student.StudentSurname,
+                    Username = student.StudentUsername,
                     IdStudent = student.IdStudent,
                 })
                 .ToList();
