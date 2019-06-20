@@ -196,7 +196,7 @@
     <Content Include="Views\ClassRooms\Details.cshtml" />
     <Content Include="Views\ClassRooms\Edit.cshtml" />
     <Content Include="Views\ClassRooms\Index.cshtml" />
-    <Content Include="Views\Scheduler\Schedule.cshtml" />
+    <Content Include="Views\Scheduler\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
