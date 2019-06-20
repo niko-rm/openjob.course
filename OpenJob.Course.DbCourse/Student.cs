@@ -40,6 +40,7 @@ namespace OpenJob.Course.DbCourse.Entities
             result = students
                 .Select(student => new StudentDTO
                 {
+
                     Name = student.StudentName,
                     SurName = student.StudentSurname,
                     IdStudent = student.IdStudent,
