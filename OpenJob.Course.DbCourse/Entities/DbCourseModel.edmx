@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DbCourseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ClassRoom">
+          <Key>
+            <PropertyRef Name="IdClassRoom" />
+          </Key>
+          <Property Name="IdClassRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassRoomName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassRoom_Student">
+          <Key>
+            <PropertyRef Name="IdCombination" />
+          </Key>
+          <Property Name="IdCombination" Type="int" Nullable="false" />
+          <Property Name="IdClassRoom" Type="int" Nullable="false" />
+          <Property Name="IdStudent" Type="int" Nullable="false" />
+          <Property Name="IdLesson" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="IdLesson" />
+          </Key>
+          <Property Name="IdLesson" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LessonName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+          </Key>
+          <Property Name="IdStudent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ClassRoom_Student_ClassRoom1">
+          <End Role="ClassRoom" Type="Self.ClassRoom" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom_Student" Type="Self.ClassRoom_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassRoom">
+              <PropertyRef Name="IdClassRoom" />
+            </Principal>
+            <Dependent Role="ClassRoom_Student">
+              <PropertyRef Name="IdClassRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassRoom_Student_Lesson1">
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom_Student" Type="Self.ClassRoom_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson">
+              <PropertyRef Name="IdLesson" />
+            </Principal>
+            <Dependent Role="ClassRoom_Student">
+              <PropertyRef Name="IdLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassRoom_Student_Student1">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom_Student" Type="Self.ClassRoom_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="IdStudent" />
+            </Principal>
+            <Dependent Role="ClassRoom_Student">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbCourseModelStoreContainer">
+          <EntitySet Name="ClassRoom" EntityType="Self.ClassRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassRoom_Student" EntityType="Self.ClassRoom_Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ClassRoom_Student_ClassRoom1" Association="Self.FK_ClassRoom_Student_ClassRoom1">
+            <End Role="ClassRoom" EntitySet="ClassRoom" />
+            <End Role="ClassRoom_Student" EntitySet="ClassRoom_Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassRoom_Student_Lesson1" Association="Self.FK_ClassRoom_Student_Lesson1">
+            <End Role="Lesson" EntitySet="Lesson" />
+            <End Role="ClassRoom_Student" EntitySet="ClassRoom_Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassRoom_Student_Student1" Association="Self.FK_ClassRoom_Student_Student1">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="ClassRoom_Student" EntitySet="ClassRoom_Student" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbCourseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ClassRoom">
+          <Key>
+            <PropertyRef Name="IdClassRoom" />
+          </Key>
+          <Property Name="IdClassRoom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassRoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClassRoom_Student" Relationship="Self.FK_ClassRoom_Student_ClassRoom1" FromRole="ClassRoom" ToRole="ClassRoom_Student" />
+        </EntityType>
+        <EntityType Name="ClassRoom_Student">
+          <Key>
+            <PropertyRef Name="IdCombination" />
+          </Key>
+          <Property Name="IdCombination" Type="Int32" Nullable="false" />
+          <Property Name="IdClassRoom" Type="Int32" Nullable="false" />
+          <Property Name="IdStudent" Type="Int32" Nullable="false" />
+          <Property Name="IdLesson" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClassRoom" Relationship="Self.FK_ClassRoom_Student_ClassRoom1" FromRole="ClassRoom_Student" ToRole="ClassRoom" />
+          <NavigationProperty Name="Lesson" Relationship="Self.FK_ClassRoom_Student_Lesson1" FromRole="ClassRoom_Student" ToRole="Lesson" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_ClassRoom_Student_Student1" FromRole="ClassRoom_Student" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="IdLesson" />
+          </Key>
+          <Property Name="IdLesson" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LessonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClassRoom_Student" Relationship="Self.FK_ClassRoom_Student_Lesson1" FromRole="Lesson" ToRole="ClassRoom_Student" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+          </Key>
+          <Property Name="IdStudent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StudentSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClassRoom_Student" Relationship="Self.FK_ClassRoom_Student_Student1" FromRole="Student" ToRole="ClassRoom_Student" />
+        </EntityType>
+        <Association Name="FK_ClassRoom_Student_ClassRoom1">
+          <End Role="ClassRoom" Type="Self.ClassRoom" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom_Student" Type="Self.ClassRoom_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassRoom">
+              <PropertyRef Name="IdClassRoom" />
+            </Principal>
+            <Dependent Role="ClassRoom_Student">
+              <PropertyRef Name="IdClassRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassRoom_Student_Lesson1">
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom_Student" Type="Self.ClassRoom_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lesson">
+              <PropertyRef Name="IdLesson" />
+            </Principal>
+            <Dependent Role="ClassRoom_Student">
+              <PropertyRef Name="IdLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassRoom_Student_Student1">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom_Student" Type="Self.ClassRoom_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="IdStudent" />
+            </Principal>
+            <Dependent Role="ClassRoom_Student">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbCourseCtx" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClassRooms" EntityType="Self.ClassRoom" />
+          <EntitySet Name="ClassRoom_Student" EntityType="Self.ClassRoom_Student" />
+          <EntitySet Name="Lessons" EntityType="Self.Lesson" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <AssociationSet Name="FK_ClassRoom_Student_ClassRoom1" Association="Self.FK_ClassRoom_Student_ClassRoom1">
+            <End Role="ClassRoom" EntitySet="ClassRooms" />
+            <End Role="ClassRoom_Student" EntitySet="ClassRoom_Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassRoom_Student_Lesson1" Association="Self.FK_ClassRoom_Student_Lesson1">
+            <End Role="Lesson" EntitySet="Lessons" />
+            <End Role="ClassRoom_Student" EntitySet="ClassRoom_Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassRoom_Student_Student1" Association="Self.FK_ClassRoom_Student_Student1">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="ClassRoom_Student" EntitySet="ClassRoom_Student" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbCourseModelStoreContainer" CdmEntityContainer="DbCourseCtx">
+          <EntitySetMapping Name="ClassRooms">
+            <EntityTypeMapping TypeName="DbCourseModel.ClassRoom">
+              <MappingFragment StoreEntitySet="ClassRoom">
+                <ScalarProperty Name="IdClassRoom" ColumnName="IdClassRoom" />
+                <ScalarProperty Name="ClassRoomName" ColumnName="ClassRoomName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassRoom_Student">
+            <EntityTypeMapping TypeName="DbCourseModel.ClassRoom_Student">
+              <MappingFragment StoreEntitySet="ClassRoom_Student">
+                <ScalarProperty Name="IdCombination" ColumnName="IdCombination" />
+                <ScalarProperty Name="IdClassRoom" ColumnName="IdClassRoom" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="IdLesson" ColumnName="IdLesson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lessons">
+            <EntityTypeMapping TypeName="DbCourseModel.Lesson">
+              <MappingFragment StoreEntitySet="Lesson">
+                <ScalarProperty Name="IdLesson" ColumnName="IdLesson" />
+                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="DbCourseModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentSurname" ColumnName="StudentSurname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

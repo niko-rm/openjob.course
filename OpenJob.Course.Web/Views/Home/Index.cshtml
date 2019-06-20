@@ -1,0 +1,12 @@
+﻿@model List<OpenJob.Course.Web.Models.StudentViewModels>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@foreach(var student in Model)
+{
+    <div class="row">
+        @student.Username | @student.GetFullName()
+    </div>
+}
