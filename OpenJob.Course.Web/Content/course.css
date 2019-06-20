@@ -1,13 +1,25 @@
-﻿
+﻿* {
+    font-family: Roboto;
+}
+
 :root {
     --primaryColor: #454D66;
     --secondColor: #009975;
-    --thirdColor: #58B368;
+    --thirdColor: #10624e;
+    --whiteColor: #fff;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: var(--thirdColor)
 }
 
 
+.navbar-inverse .navbar-toggle {
+    border-color: #fff;
+}
 .course-bg-primary {
-    background-color: var(--primaryColor)
+    background-color: var(--secondColor);
+    border-width: 0px;
 }
 
 .course-nav li a {
@@ -17,7 +29,30 @@
     background-color: var(--secondColor)
 }
 
+
+
+.navbar-inverse .navbar-nav > li > a {
+    color: var(--whiteColor);
+    margin-left: 30px;
+}
+
+
+.navbar-inverse .navbar-brand {
+    color: var(--whiteColor);
+    font-weight: 600;
+}
+
 .course-nav-fix{
     margin:0;
     padding-top: 0px;
+}
+
+
+.course-center{
+    text-align:center;
+}
+
+.card{
+    border-radius: 40px;
+    box-shadow: red 5px 5px ;
 }

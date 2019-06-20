@@ -21,11 +21,44 @@
                 @Html.ActionLink("Students Managment", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse course-nav-fix">
-                <ul class="nav navbar-nav course-nav">
-                    <li>@Html.ActionLink("Classrooms", "Index", "Classrooms")</li>
-                    <li>@Html.ActionLink("Lessons", "Index", "Lessons")</li>
-                    <li>@Html.ActionLink("Students", "Index", "Students")</li>
-                    <li>@Html.ActionLink("Scheduler", "Index", "Scheduler")</li>
+                <ul class="nav navbar-nav course-nav" style="color:white">
+
+
+                    <li >
+                        <div style="margin: 0px 5vw;height:40px; display: flex; align-items:center;justify-content:center;">
+                            <div class="glyphicon glyphicon-th">
+                                @Html.ActionLink("Class", "Index", "Classrooms")
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div style="margin: 0px 5vw;height:40px; display: flex; align-items:center;justify-content:center;">
+                            <div class="glyphicon glyphicon-book">
+                                @Html.ActionLink("Lezioni", "Index", "Lessons")
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <div style="margin: 0px 5vw;height:40px; display: flex; align-items:center;justify-content:center;">
+                            <div class="glyphicon glyphicon-user">
+                                @Html.ActionLink("Students", "Index", "Students")
+                            </div>
+                        </div>
+                    </li>
+                    
+                    
+                    <li >
+                        <div style=" height:40px; display: flex; align-items:center;justify-content:center;">
+                            <div class="glyphicon glyphicon-pencil">
+                                @Html.ActionLink("Scheduler", "Index", "Scheduler")
+                            </div>
+                        </div>
+                    </li>
+
+
+           
                 </ul>
             </div>
         </div>
