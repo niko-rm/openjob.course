@@ -4,9 +4,4 @@
     ViewBag.Title = "Home Page";
 }
 
-@foreach(var student in Model)
-{
-    <div class="row">
-        @student.Username | @student.GetFullName()
-    </div>
-}
+    @Html.ActionLink("Schedule", "Index", "Scheduler")
