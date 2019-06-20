@@ -1,0 +1,23 @@
+﻿
+:root {
+    --primaryColor: #454D66;
+    --secondColor: #009975;
+    --thirdColor: #58B368;
+}
+
+
+.course-bg-primary {
+    background-color: var(--primaryColor)
+}
+
+.course-nav li a {
+    color: white;
+}
+.course-nav li a{
+    background-color: var(--secondColor)
+}
+
+.course-nav-fix{
+    margin:0;
+    padding-top: 0px;
+}
