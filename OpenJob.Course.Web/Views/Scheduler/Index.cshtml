@@ -19,14 +19,19 @@
             </div>
             <div class="modal-body">
                 <!--DropDown Studenti-->
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown button
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        @Html.DropDownListFor(model => model.students, listItems, "-- Select Status --")
-                    </div>
-                </div>
+               
+                        @{ 
+                            var listItems = Model.students.Select(x => new SelectListItem()
+                            {
+                                Text = x.GetFullName(),
+                                Value = x.IdStudent.ToString()
+                            }).AsEnumerable();
+
+                            var selectListStudent = new SelectList(listItems);
+                        }
+
+                        @Html.DropDownListFor(model => Model.IdSelectedStudent, listItems,"Select student", new { })
+                    
             </div>
             <!--DropDown ClassRooms-->
             <div class="dropdown">

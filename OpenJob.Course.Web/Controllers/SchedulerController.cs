@@ -47,8 +47,6 @@ namespace OpenJob.Course.Web.Controllers
                 classRooms = classRoomViewModels
             };
 
-
-
             return View(schedulerViewModel);
         }
     }
