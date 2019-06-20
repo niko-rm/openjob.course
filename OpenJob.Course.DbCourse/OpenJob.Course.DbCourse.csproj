@@ -90,6 +90,9 @@
     <Compile Include="Entities\Lesson.cs">
       <DependentUpon>DbCourseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\LogDefinition.cs">
+      <DependentUpon>DbCourseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Student.cs">
       <DependentUpon>DbCourseModel.tt</DependentUpon>
     </Compile>

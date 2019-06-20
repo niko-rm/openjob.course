@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using OpenJob.Course.DTOs;
 using System.Linq;
 using System.Web;
+using OpenJob.Course.DTOs;
 
 namespace OpenJob.Course.Web.Models
 {
