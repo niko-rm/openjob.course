@@ -11,7 +11,7 @@ using OpenJob.Course.DbCourse.Entities;
 using OpenJob.Course.Web.Models;
 
 namespace OpenJob.Course.Web.Controllers
-{
+{ 
     public class ClassRoomsController : Controller
     {
         private DbCourseCtx db = new DbCourseCtx();
