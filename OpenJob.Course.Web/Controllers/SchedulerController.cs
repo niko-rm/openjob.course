@@ -11,6 +11,7 @@ namespace OpenJob.Course.Web.Controllers
 {
     public class SchedulerController : Controller
     {
+        private DbCourseCtx db = new DbCourseCtx();
         // GET: Scheduler
         public async Task<ActionResult> Index()
         {
@@ -48,6 +49,16 @@ namespace OpenJob.Course.Web.Controllers
             };
 
             return View(schedulerViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(int idStudente, int idLesson, int idClass)
+        {
+                db.ClassRoom_Student.Add(new ClassRoom_Student { IdStudent = idStudente, IdLesson = idLesson, IdClassRoom = idClass});
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");   
+                
         }
     }
 }

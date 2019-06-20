@@ -23,7 +23,7 @@
                 @{
                     var listItems = Model.students.Select(x => new SelectListItem()
                     {
-                        Text = x.GetFullName(),
+                        Text = x.IdStudent.ToString(),
                         Value = x.IdStudent.ToString()
                     }).AsEnumerable();
 
@@ -36,7 +36,7 @@
                 @{
                     var listItemsLesson = Model.lessons.Select(x => new SelectListItem()
                     {
-                        Text = x.Name,
+                        Text = x.IdLesson.ToString(),
                         Value = x.IdLesson.ToString()
                     }).AsEnumerable();
 
@@ -48,14 +48,14 @@
                 @{
                     var listItemsClass = Model.classRooms.Select(x => new SelectListItem()
                     {
-                        Text = x.Name,
+                        Text = x.IdClassRoom.ToString(),
                         Value = x.IdClassRoom.ToString()
                     }).AsEnumerable();
 
                     var selectListCls = new SelectList(listItemsClass);
                 }
 
-                @Html.DropDownListFor(model => Model.IdSelectedClass, listItemsClass, "Select ClassRoom", new { })
+                @Html.DropDownListFor(model => Model.IdSelectedClass, listItemsClass, "Select ClassRo'", new { })
 
           
         <button class="btn btn-primary">Salva</button>
