@@ -18,7 +18,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!--DropDown Studenti-->
+                
 
                 @{
                     var listItems = Model.students.Select(x => new SelectListItem()
@@ -30,7 +30,7 @@
                     var selectListStudent = new SelectList(listItems,"Text","Value");
                 }
 
-                @Html.DropDownListFor(model => Model.IdSelectedStudent, listItems, "Select student", new { })
+                @Html.DropDownListFor(model => Model.IdSelectedStudent, listItems, "Select student", new {id="dropdown-student"})
 
 
                 @{
@@ -43,7 +43,7 @@
                     var selectListLes = new SelectList(listItemsLesson);
                 }
 
-                @Html.DropDownListFor(model => Model.IdSelectedLesson, listItemsLesson, "Select Lesson", new { })
+                @Html.DropDownListFor(model => Model.IdSelectedLesson, listItemsLesson, "Select Lesson", new {id="dropdown-lesson" })
 
                 @{
                     var listItemsClass = Model.classRooms.Select(x => new SelectListItem()
@@ -55,14 +55,40 @@
                     var selectListCls = new SelectList(listItemsClass);
                 }
 
-                @Html.DropDownListFor(model => Model.IdSelectedClass, listItemsClass, "Select ClassRo'", new { })
+                @Html.DropDownListFor(model => Model.IdSelectedClass, listItemsClass, "Select ClassRo'", new {id="dropdown-classRoom" })
 
           
-        <button class="btn btn-primary">Salva</button>
+        <button class="btn btn-primary" id="salva">Salva</button>
     </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
-    
+    <script>
+        $(document).ready(
+            function () {
+                $("#salva").on('click', function () {
+                    var idStudente = $("#dropdown-student").val();
+                    var idLesson = $("#dropdown-lesson").val();
+                    var idClassRoom = $("#dropdown-classRoom").val();
+
+                    $.ajax({
+                        url: '@Url.Action("Create","Scheduler")',
+                        type: 'POST',
+                        data: {
+                            idStudente: idStudente,
+                            idLesson: idLesson,
+                            idClass: idClassRoom
+                        },
+                        success: (result) => {
+                            alert("Relazione salvata con successo", result);
+                        },
+                        error: (result) => {
+                            alert("Errore durante la creazione", result);
+                        }
+
+                    });
+                });
+            });
+    </script>
