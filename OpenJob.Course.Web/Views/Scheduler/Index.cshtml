@@ -23,11 +23,12 @@
                 @{
                     var listItems = Model.students.Select(x => new SelectListItem()
                     {
+                        
                         Text = x.IdStudent.ToString(),
                         Value = x.IdStudent.ToString()
                     }).AsEnumerable();
 
-                    var selectListStudent = new SelectList(listItems,"Text","Value");
+                    var selectListStudent = new SelectList(listItems, "Text", "Value");
                 }
 
                 @Html.DropDownListFor(model => Model.IdSelectedStudent, listItems, "Select student", new { })
@@ -57,12 +58,30 @@
 
                 @Html.DropDownListFor(model => Model.IdSelectedClass, listItemsClass, "Select ClassRo'", new { })
 
-          
-        <button class="btn btn-primary">Salva</button>
-    </div>
+
+                <button class="btn btn-primary">Salva</button>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
-    
+<script>
+
+    function UpdateStudenti() {
+        var usersJson = ();
+        var getReportColumnsParams = {
+            "usersJson": usersJson
+        };
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            async: false,
+            cache: false,
+            url: '',
+            context: document.body,
+            data: getReportColumnsParams,
+            success: function (result) {
+                alert(result);
+            }
+        </script>

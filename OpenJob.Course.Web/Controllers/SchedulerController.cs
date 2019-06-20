@@ -52,13 +52,12 @@ namespace OpenJob.Course.Web.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(int idStudente, int idLesson, int idClass)
+        public JsonResult Create(int idStudente, int idLesson, int idClass)
         {
-                db.ClassRoom_Student.Add(new ClassRoom_Student { IdStudent = idStudente, IdLesson = idLesson, IdClassRoom = idClass});
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");   
-                
+            db.ClassRoom_Student.Add(new ClassRoom_Student { IdStudent = idStudente, IdLesson = idLesson, IdClassRoom = idClass });
+            db.SaveChanges();
+
+            return Json(true, JsonRequestBehavior.DenyGet);
         }
     }
 }
