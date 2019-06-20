@@ -6,6 +6,15 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script>
+        $(document).ready(function(){
+          $("button").click(function(){
+            $.ajax({url: "@Url.Action("","")", success: function(result){
+              $("#div1").html(result);
+            }});
+          });
+        });
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -34,6 +43,7 @@
         </footer>
     </div>
 
+    <button id=""></button>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
