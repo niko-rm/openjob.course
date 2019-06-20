@@ -19,44 +19,45 @@
             </div>
             <div class="modal-body">
                 <!--DropDown Studenti-->
-               
-                        @{ 
-                            var listItems = Model.students.Select(x => new SelectListItem()
-                            {
-                                Text = x.GetFullName(),
-                                Value = x.IdStudent.ToString()
-                            }).AsEnumerable();
 
-                            var selectListStudent = new SelectList(listItems);
-                        }
-
-                        @Html.DropDownListFor(model => Model.IdSelectedStudent, listItems,"Select student", new { })
-                    
-            </div>
-            <!--DropDown ClassRooms-->
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    @foreach (var clas in Model.classRooms)
+                @{
+                    var listItems = Model.students.Select(x => new SelectListItem()
                     {
-                        <a class="dropdown-item" href="#">@clas.IdClassRoom</a>}
-                </div>
-            </div>
-        </div>
-        <!--DropDown Lessons-->
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                @foreach (var lesson in Model.lessons)
-                {
-                    <a class="dropdown-item" href="#">@lesson.IdLesson</a>
+                        Text = x.GetFullName(),
+                        Value = x.IdStudent.ToString()
+                    }).AsEnumerable();
+
+                    var selectListStudent = new SelectList(listItems,"Text","Value");
                 }
-            </div>
-        </div>
+
+                @Html.DropDownListFor(model => Model.IdSelectedStudent, listItems, "Select student", new { })
+
+
+                @{
+                    var listItemsLesson = Model.lessons.Select(x => new SelectListItem()
+                    {
+                        Text = x.Name,
+                        Value = x.IdLesson.ToString()
+                    }).AsEnumerable();
+
+                    var selectListLes = new SelectList(listItemsLesson);
+                }
+
+                @Html.DropDownListFor(model => Model.IdSelectedLesson, listItemsLesson, "Select Lesson", new { })
+
+                @{
+                    var listItemsClass = Model.classRooms.Select(x => new SelectListItem()
+                    {
+                        Text = x.Name,
+                        Value = x.IdClassRoom.ToString()
+                    }).AsEnumerable();
+
+                    var selectListCls = new SelectList(listItemsClass);
+                }
+
+                @Html.DropDownListFor(model => Model.IdSelectedClass, listItemsClass, "Select ClassRoom", new { })
+
+          
         <button class="btn btn-primary">Salva</button>
     </div>
             <div class="modal-footer">

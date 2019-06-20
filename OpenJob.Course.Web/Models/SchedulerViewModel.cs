@@ -8,6 +8,8 @@ namespace OpenJob.Course.Web.Models
     public class SchedulerViewModel
     {
         public int IdSelectedStudent { get; set; }
+        public int IdSelectedLesson { get; set; }
+        public int IdSelectedClass { get; set; }
         public List<StudentViewModels> students { get; set; }
         public List<LessonViewModels> lessons { get; set; }
         public List<ClassRoomViewModels> classRooms { get; set; }
