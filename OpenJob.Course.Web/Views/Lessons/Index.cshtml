@@ -17,17 +17,44 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdLesson }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdLesson }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdLesson })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdLesson }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdLesson }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdLesson })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<script>
+    $(document).ready(
+        function () {
+            $('#').click(
+                function () {
+
+                    var Studente = $("#studente").val();
+                    $.ajax(
+                        {
+                            url: '@Url.Action("", "")',
+                            type: 'POST',
+                            data: { m },
+                            success: function () {
+                            },
+                            error: function () {
+
+                            }
+                        }
+                    )
+                }
+            )
+        }
+    );
+</script>
+
