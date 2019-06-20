@@ -12,6 +12,7 @@
         <AssociationConnector Association="DbCourseModel.FK_ClassRoom_Student_ClassRoom1" ManuallyRouted="false" />
         <AssociationConnector Association="DbCourseModel.FK_ClassRoom_Student_Lesson1" ManuallyRouted="false" />
         <AssociationConnector Association="DbCourseModel.FK_ClassRoom_Student_Student1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DbCourseModel.LogDefinition" Width="1.5" PointX="4.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DbCourseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DbCourseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ClassRoom">
           <Key>
             <PropertyRef Name="IdClassRoom" />
@@ -27,6 +27,15 @@
           </Key>
           <Property Name="IdLesson" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LessonName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogDefinition">
+          <Key>
+            <PropertyRef Name="UidLog" />
+          </Key>
+          <Property Name="UidLog" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LogAction" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LogSeverity" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LogMessage" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -82,6 +91,7 @@
           <EntitySet Name="ClassRoom" EntityType="Self.ClassRoom" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClassRoom_Student" EntityType="Self.ClassRoom_Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogDefinition" EntityType="Self.LogDefinition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ClassRoom_Student_ClassRoom1" Association="Self.FK_ClassRoom_Student_ClassRoom1">
             <End Role="ClassRoom" EntitySet="ClassRoom" />
@@ -96,8 +106,7 @@
             <End Role="ClassRoom_Student" EntitySet="ClassRoom_Student" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DbCourseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -197,7 +206,17 @@
             <End Role="Student" EntitySet="Students" />
             <End Role="ClassRoom_Student" EntitySet="ClassRoom_Student" />
           </AssociationSet>
+          <EntitySet Name="LogDefinitions" EntityType="DbCourseModel.LogDefinition" />
         </EntityContainer>
+        <EntityType Name="LogDefinition">
+          <Key>
+            <PropertyRef Name="UidLog" />
+          </Key>
+          <Property Name="UidLog" Type="Guid" Nullable="false" />
+          <Property Name="LogAction" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LogSeverity" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LogMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -236,6 +255,16 @@
                 <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
                 <ScalarProperty Name="StudentName" ColumnName="StudentName" />
                 <ScalarProperty Name="StudentSurname" ColumnName="StudentSurname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogDefinitions">
+            <EntityTypeMapping TypeName="DbCourseModel.LogDefinition">
+              <MappingFragment StoreEntitySet="LogDefinition">
+                <ScalarProperty Name="LogMessage" ColumnName="LogMessage" />
+                <ScalarProperty Name="LogSeverity" ColumnName="LogSeverity" />
+                <ScalarProperty Name="LogAction" ColumnName="LogAction" />
+                <ScalarProperty Name="UidLog" ColumnName="UidLog" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

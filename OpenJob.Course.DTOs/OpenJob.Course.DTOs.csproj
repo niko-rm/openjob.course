@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogDefinitionDTO.cs" />
     <Compile Include="ClassRoomDTO.cs" />
     <Compile Include="LessonDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
