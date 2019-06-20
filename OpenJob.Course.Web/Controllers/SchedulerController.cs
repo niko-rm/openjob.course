@@ -49,5 +49,10 @@ namespace OpenJob.Course.Web.Controllers
 
             return View(schedulerViewModel);
         }
+
+        //public JSonResult YourJsonFunction()
+        //{
+        //    return JSon(;"", Json
+        //}
     }
 }
