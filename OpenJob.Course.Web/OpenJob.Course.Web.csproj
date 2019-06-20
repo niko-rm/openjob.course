@@ -132,10 +132,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LessonsController.cs" />
     <Compile Include="Controllers\LogDefinitionController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ScheduleViewModels.cs" />
     <Compile Include="Models\ClassRoomViewModels.cs" />
     <Compile Include="Models\LessonViewModels.cs" />
     <Compile Include="Models\LogDefinitionViewModel.cs" />
@@ -198,6 +200,7 @@
     <Content Include="Views\ClassRooms\Details.cshtml" />
     <Content Include="Views\ClassRooms\Edit.cshtml" />
     <Content Include="Views\ClassRooms\Index.cshtml" />
+    <Content Include="Views\Schedule\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\LogDefinition\" />

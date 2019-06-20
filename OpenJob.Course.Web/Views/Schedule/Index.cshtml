@@ -1,0 +1,87 @@
+﻿@model OpenJob.Course.Web.Models.ScheduleViewModels
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Schedule of the students</h2>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Connect students to lessons and classrooms
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Connect</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-sm">
+                    <form>
+                        <select name="students" class="form-control" id="studentsDropdown" required="true">
+                            <option selected disabled>Choose a student</option>
+                            @foreach(var stud in Model.listStudents)
+                            {
+                                <option value="@stud.IdStudent">@stud.GetFullName()</option>
+                            }
+                        
+                        </select>
+                    </form>
+                </div>
+                <div class="col-sm">
+                    <form>
+                        <select name="students" class="form-control" id="classroomsDropdown" required="true">
+                            <option selected disabled>Choose a classroom</option>
+                            @foreach (var lesson in Model.listLessons)
+                            {
+                                <option value="@lesson.IdLesson">@lesson.Name</option>
+                            }
+                        </select>
+                    </form>
+                </div>
+                <div class="col-sm">
+                    <form>
+                        <select name="classrooms" class="form-control" id="lessonDropdown" required="true">
+                            <option selected disabled>Choose a lesson</option>
+                            @foreach (var stud in Model.listClassroom)
+                            {
+                                <option value="@stud.IdClassRoom">@stud.Name</option>
+                            }
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th>Student full name</th>
+                    <th>Classroom attended</th>
+                    <th>Lesson</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
