@@ -196,10 +196,9 @@
     <Content Include="Views\ClassRooms\Details.cshtml" />
     <Content Include="Views\ClassRooms\Edit.cshtml" />
     <Content Include="Views\ClassRooms\Index.cshtml" />
+    <Content Include="Views\Scheduler\Schedule.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Scheduler\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
