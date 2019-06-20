@@ -59,7 +59,7 @@ namespace OpenJob.Course.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Students.Add(new Student { StudentName = studentViewModels.Name, StudentSurname = studentViewModels.SurName });
+                db.Students.Add(new Student { StudentName = studentViewModels.Name, StudentSurname = studentViewModels.SurName});
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
