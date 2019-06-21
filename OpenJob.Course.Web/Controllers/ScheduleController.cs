@@ -25,6 +25,7 @@ namespace OpenJob.Course.Api.Controllers
             ScheduleViewModels.listStudents = listStudentDTO.Select(x => new StudentViewModels() { IdStudent = x.IdStudent, Name = x.Name, SurName = x.SurName }).ToList();
             ScheduleViewModels.listLessons = listLessonDTO.Select(x => new LessonViewModels() { IdLesson = x.IdLesson, Name = x.Name}).ToList();
             ScheduleViewModels.listClassroom = listClassroomDTO.Select(x => new ClassRoomViewModels() { IdClassRoom = x.IdClassRoom, Name = x.Name }).ToList();
+            
             return View(ScheduleViewModels);
         }
 

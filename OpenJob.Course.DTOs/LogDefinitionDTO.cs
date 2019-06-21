@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenJob.Course.DTOs
 {
-    class LogDefinitionDTO
+    public class LogDefinitionDTO
     {
         [Key]
         public Guid UidLog { get; set; }
